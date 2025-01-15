@@ -1,0 +1,29 @@
+# version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: whiteboard_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on: # Make sure backend starts after the DB
+      - db
+    environment: # Pass the DB URL to the app
+      - DATABASE_URL=postgresql://user:password@db:5432/whiteboarddb
+
+  db: # ADD THIS NEW SERVICE
+    image: postgres:15-alpine
+    container_name: whiteboard_db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=whiteboarddb
+    ports:
+      - "5433:5432" # Expose on a different port to avoid conflicts
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
