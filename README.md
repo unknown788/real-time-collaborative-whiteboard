@@ -4,7 +4,7 @@
 
 A feature-rich, persistent, real-time collaborative whiteboard application built with FastAPI (WebSockets), Next.js (React), and PostgreSQL.
 
-[Image of a modern collaborative whiteboard UI]
+
 
 ## Overview
 
@@ -27,7 +27,7 @@ The goal was to build a robust, stateful application demonstrating mastery of We
 
 The application follows a client-server architecture with a clear separation between the frontend and backend.
 
-[Image of a real-time web application architecture]
+
 
 ```mermaid
 graph TD
