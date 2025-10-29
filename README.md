@@ -32,22 +32,22 @@ The application follows a client-server architecture with a clear separation bet
 ```mermaid
 graph TD
     subgraph Browser Clients
-        Client1[Client 1 (Next.js @ whiteboard.404by.me)]
-        Client2[Client 2 (Next.js @ whiteboard.404by.me)]
+        Client1["Client 1 - Next.js Frontend"]
+        Client2["Client 2 - Next.js Frontend"]
     end
 
     subgraph Cloud Infrastructure
         subgraph Heroku
-            Backend[Backend (FastAPI + Uvicorn)]
+            Backend[Backend - FastAPI + Uvicorn]
         end
         subgraph Neon / Heroku Postgres
-            DB[(PostgreSQL Database)]
+            DB[(Database - PostgreSQL)]
         end
     end
 
-    Client1 -- Secure WebSocket (wss://) --> Backend
-    Client2 -- Secure WebSocket (wss://) --> Backend
-    Backend -- SQL Queries (Thread Pool) --> DB
+    Client1 -- Secure WebSocket 'wss://' --> Backend
+    Client2 -- Secure WebSocket 'wss://' --> Backend
+    Backend -- SQL Queries 'Thread Pool' --> DB
     Backend -- Broadcast --> Client1
     Backend -- Broadcast --> Client2
 
